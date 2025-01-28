@@ -10,7 +10,7 @@ export async function createPodcastScript(extractedData: any) {
       messages: [
         {
           role: "system",
-          content: "Transform this extracted data into a natural podcast script with a random host name and no background music, act like you are a host with a random speaker,."
+          content: "Transform this extracted data into a natural podcast script with a random host name and no background music, act like you are a host with a random speaker, don't add anything else to the script except the actual script, things like pace, instructions, tone  and other things should be avoided, take an AI's name as the host."
         },
         {
           role: "user",
