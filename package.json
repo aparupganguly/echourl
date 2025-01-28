@@ -14,6 +14,7 @@
     "dotenv": "^16.4.7",
     "dotenv-extended": "^2.9.0",
     "elevenlabs": "^1.50.4",
+    "framer-motion": "^12.0.6",
     "groq-sdk": "^0.12.0",
     "next": "15.1.6",
     "react": "^19.0.0",
