@@ -1,5 +1,5 @@
 "use client";
-
+import { SparklesIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { motion } from "framer-motion"; // For smooth animations
 
@@ -54,33 +54,41 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 flex flex-col items-center">
-      <header className="py-6 w-full bg-white shadow-md">
-        <h1 className="text-3xl font-bold text-center text-gray-800">
+    <div className="min-h-screen  flex flex-col items-center">
+      <header className="py-6 w-full">
+        {/* <h1 className="text-3xl font-bold text-center text-gray-800">
           Podcast Generator
-        </h1>
+        </h1> */}
       </header>
 
       <main className="flex-1 w-full max-w-3xl p-6">
-        <div className="bg-white shadow-lg rounded-lg p-6">
-          <h2 className="text-xl font-semibold text-gray-700 mb-4">
+        <div className="">
+          <h2 className="">
             Enter URLs to Generate a Podcast
           </h2>
-          <textarea
-            value={urls}
-            onChange={(e) => setUrls(e.target.value)}
-            placeholder="Enter URLs separated by commas..."
-            className="w-full h-24 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button
-            onClick={handleGenerate}
-            disabled={loading}
-            className={`mt-4 w-full py-2 px-4 rounded-lg text-white font-semibold transition-all duration-300 ${
-              loading ? "bg-gray-400 cursor-not-allowed" : "bg-orange-500 hover:bg-orange-600"
-            }`}
-          >
-            {loading ? "Generating..." : "Generate Podcast"}
-          </button>
+          <div className="Input-Container">
+            <textarea
+              value={urls}
+              onChange={(e) => setUrls(e.target.value)}
+              placeholder="Enter URLs separated by commas..."
+              className="w-full h-24 p-3 "
+            />
+            <button
+              onClick={handleGenerate}
+              disabled={loading}
+            //     className={`mt-2 mb-2  w-full py-3 px-6 flex items-center justify-center gap-2 
+            // rounded-md
+            //  font-semibold text-lg transition-all duration-300
+            // shadow-md border border-[#d4af37] ${loading
+            //         ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+            //         : "bg-gradient-to-b from-[#f7d382] to-[#d4a054] text-gray-900 hover:brightness-110"
+            //       }`}
+            >
+              {!loading && <SparklesIcon className="w-5 h-5 text-gray-700" />}
+              {loading ? "Generating..." : "Generate Now"}
+            </button>
+
+          </div>
 
           {error && (
             <motion.div

@@ -4,5 +4,40 @@
 
 /* Your custom styles come after */
 body {
-  font-family: Arial, sans-serif;
+  font-family: "General Sans";
+  letter-spacing: -0.6px;
+}
+button {
+  width: 235.667px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 21px;
+  border: 2px solid #878787;
+  background: linear-gradient(90deg, #fdc36f 0%, #ebc896 42.66%, #dab278 100%);
+  font-weight: 600;
+
+  color: #424242;
+}
+button:hover {
+  background: linear-gradient(90deg, #e6c290 0%, #f1cf9f 42.66%, #fbd192 100%);
+}
+
+.Input-Container {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  margin-top: 1em;
+  align-items: center;
+  justify-content: center;
+}
+.Input-Container textarea {
+  width: 1124px;
+  height: 60px;
+  border-radius: 17.544px;
+  border: 2px solid rgba(197, 197, 197, 0.36);
+  background-color: transparent;
 }
