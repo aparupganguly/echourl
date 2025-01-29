@@ -6,6 +6,25 @@
 body {
   font-family: "General Sans";
   letter-spacing: -0.6px;
+  background-color: #191919;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  cursor: pointer !important;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ebebeb;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  cursor: pointer !important;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #6d6d6d;
+  cursor: pointer !important;
 }
 button {
   width: 235.667px;
@@ -33,6 +52,7 @@ button:hover {
   margin-top: 1em;
   align-items: center;
   justify-content: center;
+  color: "#C8C8C8";
 }
 .Input-Container textarea {
   width: 1124px;
@@ -40,4 +60,17 @@ button:hover {
   border-radius: 17.544px;
   border: 2px solid rgba(197, 197, 197, 0.36);
   background-color: transparent;
+  color: "#C8C8C8";
+
+}
+
+.heading {
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #b6b6b6;
+}
+textarea {
+  color: #dedede;
 }

@@ -1,7 +1,8 @@
 "use client";
 import { SparklesIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion"; // For smooth animations
+import gsap from "gsap";
 
 export default function HomePage() {
   const [urls, setUrls] = useState<string>("");
@@ -9,6 +10,17 @@ export default function HomePage() {
   const [audioUrl, setAudioUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const podcastRef = useRef(null);
+
+  useEffect(() => {
+    if (script) {
+      gsap.fromTo(
+        podcastRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+      );
+    }
+  }, [script]);
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -54,40 +66,22 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen  flex flex-col items-center">
-      <header className="py-6 w-full">
-        {/* <h1 className="text-3xl font-bold text-center text-gray-800">
-          Podcast Generator
-        </h1> */}
-      </header>
+    <div className="min-h-screen flex flex-col items-center border border-gray-600 rounded-lg">
 
       <main className="flex-1 w-full max-w-3xl p-6">
         <div className="">
-          <h2 className="">
-            Enter URLs to Generate a Podcast
-          </h2>
+          <h2 className="heading">Enter URLs to Generate a Podcast</h2>
           <div className="Input-Container">
             <textarea
               value={urls}
               onChange={(e) => setUrls(e.target.value)}
               placeholder="Enter URLs separated by commas..."
-              className="w-full h-24 p-3 "
+              className="w-full h-24 p-3"
             />
-            <button
-              onClick={handleGenerate}
-              disabled={loading}
-            //     className={`mt-2 mb-2  w-full py-3 px-6 flex items-center justify-center gap-2 
-            // rounded-md
-            //  font-semibold text-lg transition-all duration-300
-            // shadow-md border border-[#d4af37] ${loading
-            //         ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-            //         : "bg-gradient-to-b from-[#f7d382] to-[#d4a054] text-gray-900 hover:brightness-110"
-            //       }`}
-            >
+            <button onClick={handleGenerate} disabled={loading}>
               {!loading && <SparklesIcon className="w-5 h-5 text-gray-700" />}
               {loading ? "Generating..." : "Generate Now"}
             </button>
-
           </div>
 
           {error && (
@@ -102,28 +96,22 @@ export default function HomePage() {
         </div>
 
         {script && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="mt-6 bg-white shadow-lg rounded-lg p-6"
-          >
-            <h3 className="text-lg font-medium text-gray-800 mb-2">
-              Generated Script:
+          <div ref={podcastRef} className="mt-6 shadow-lg rounded-lg p-6">
+            <h3 className="text-lg font-medium text-white mb-2">
+              Generated Podcast:
             </h3>
-            <p className="text-gray-700 whitespace-pre-wrap">{script}</p>
-
             {audioUrl && (
-              <audio controls src={audioUrl} className="mt-4 w-full">
+              <audio controls src={audioUrl} className="mt-4 mb-4 w-full ">
                 Your browser does not support the audio element.
               </audio>
             )}
-          </motion.div>
+            <h3 className="text-lg font-medium text-white mb-2">
+              Generated Script:
+            </h3>
+            <p className="text-gray-400 whitespace-pre-wrap">{script}</p>
+          </div>
         )}
       </main>
-
-      <footer className="py-4 w-full bg-gray-800 text-white text-center">
-        <p className="text-sm">&copy; 2025 Podcast Generator. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
