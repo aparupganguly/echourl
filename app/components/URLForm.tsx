@@ -66,7 +66,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center border border-gray-600 rounded-lg">
+    <div className="min-h-screen flex flex-col items-center ">
 
       <main className="flex-1 w-full max-w-3xl p-6">
         <div className="">
@@ -88,7 +88,7 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-4 bg-red-100 border border-red-400 text-red-700 p-3 rounded-lg"
+              className=" "
             >
               {error}
             </motion.div>
@@ -96,7 +96,7 @@ export default function HomePage() {
         </div>
 
         {script && (
-          <div ref={podcastRef} className="mt-6 shadow-lg rounded-lg p-6">
+          <div ref={podcastRef} className="mt-6 shadow-xl rounded-lg p-6 border border-gray-800 rounded-lg">
             <h3 className="text-lg font-medium text-white mb-2">
               Generated Podcast:
             </h3>
